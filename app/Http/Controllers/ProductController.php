@@ -54,10 +54,6 @@ class ProductController extends Controller
             'stock' => 'required|integer|min:0',
         ]);
 
-        if (!auth()->check()) { //jika user tidak terautentikasi
-            return response()->json(['message' => 'Unauthorized'], 401); //maka kembalikan response unauthorized
-        }
-
         $product = Product::create($validatedData);
 
         return response()->json(['message' => 'Product created', 'product' => $product],201);
