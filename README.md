@@ -1,3 +1,174 @@
+# List Endpoint
+
+## Register
+
+`POST /api/register`
+
+**Request Body:**
+```json
+{
+    "name" : "coba",
+    "email" "coba@gmail.com",
+    "password" : "12345678"
+}
+
+```
+
+## Login
+
+`POST /api/login`
+
+**Request Body:**
+```json
+{
+    "email" "coba@gmail.com",
+    "password" : "12345678"
+}
+
+```
+
+**Response Body:**
+```json
+{
+    "message": "Login success",
+    "access_token": "2|rNAA...",
+    "token_type": "Bearer"
+}
+
+```
+
+## Create Product
+
+`POST /api/products`
+
+**Request Body:**
+```json
+{
+    "name" : "dimsum",
+    "category_id" : 2,
+    "brand_id" : 1,
+    "price" : 20000,
+    "stock" : 10
+}
+
+```
+
+## Logout
+
+`POST /api/logout`
+
+## Show All Products
+
+`GET /api/products`
+
+**Response Body:**
+```json
+{
+    "current_page": 1,
+    "data": [
+        {
+            "id": 1,
+            "name": "laptop",
+            "category_id": 1,
+            "brand_id": 1,
+            "price": "100.00",
+            "stock": 50,
+            "created_at": "2025-08-09T08:08:53.000000Z",
+            "updated_at": "2025-08-09T08:08:53.000000Z",
+            "category": {
+                "id": 1,
+                "name": "Electronics",
+                "created_at": "2025-08-09T08:08:53.000000Z",
+                "updated_at": "2025-08-09T08:08:53.000000Z"
+            },
+            "brand": {
+                "id": 1,
+                "name": "lenovo",
+                "created_at": "2025-08-09T08:08:53.000000Z",
+                "updated_at": "2025-08-09T08:08:53.000000Z"
+            }
+        },
+    ]    
+}
+```
+## Update Product
+
+`PUT /api/product/{id}`
+
+**Request Body:**
+```json
+{
+    "name" : "dimsum",
+    "category_id" : 2,
+    "brand_id" : 1,
+    "price" : 20000,
+    "stock" : 10
+}
+```
+## Delete Product
+
+`DELETE /api/product/{id}`
+
+## Show All Category
+
+`GET /api/category/{id}`
+
+## Create Category
+
+`POST /api/categories`
+**Request Body:**
+```json
+{
+    "name" : "food",
+}
+```
+
+## Update Category
+
+`PUT /api/category/{id}`
+
+**Request Body:**
+```json
+{
+    "name" : "food",
+}
+```
+## Delete Category
+
+`DELETE /api/brand/{id}`
+
+## Show All Brand
+
+`GET /api/brand/{id}`
+
+## Create Brand
+
+`POST /api/brands`
+**Request Body:**
+```json
+{
+    "name" : "hokben",
+}
+```
+
+## Update Brand
+
+`PUT /api/brand/{id}`
+
+**Request Body:**
+```json
+{
+    "name" : "hokben",
+}
+```
+
+## Delete Brand
+
+`DELETE /api/brand/{id}`
+
+
+
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
 <p align="center">
