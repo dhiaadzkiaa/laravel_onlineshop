@@ -11,8 +11,19 @@ class Product extends Model
         'category_id',
         'brand_id',
         'price',
-        'stock'
+        'stock',
+        'image' // Add image to fillable attributes
     ];
+
+    protected $appends = [
+        'image_url'
+    ];
+
+    public function getImageUrlAttribute()
+    {
+        return $this->image ? asset('storage/' . $this->image) : null; // Return full URL for image
+    }
+
 
     public function category()
     {

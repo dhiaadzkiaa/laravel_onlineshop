@@ -44,20 +44,30 @@ class ProductController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
-    {
-        $validatedData = $request->validate([
-            'name' => 'required|string|max:50',
-            'category_id' => 'required|exists:categories,id',
-            'brand_id' => 'required|exists:brands,id',
-            'price' => 'required|numeric|min:0',
-            'stock' => 'required|integer|min:0',
-        ]);
+        public function store(Request $request)
+        {
+            $validatedData = $request->validate([
+                'name' => 'required|string|max:50',
+                'category_id' => 'required|exists:categories,id',
+                'brand_id' => 'required|exists:brands,id',
+                'price' => 'required|numeric|min:0',
+                'stock' => 'required|integer|min:0',
+                'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048', // image validation
+            ]);
 
-        $product = Product::create($validatedData);
+            //upload image
+            $path = null;
+            if ($request->hasFile('image')) {
+                $image = $request->file('image');
+                $path = $image->store('products', 'public'); // store image in
+                $validatedData['image'] = $path; // add image path to validated data
+            }
 
-        return response()->json(['message' => 'Product created', 'product' => $product],201);
-    }
+
+            $product = Product::create($validatedData);
+
+            return response()->json(['message' => 'Product created','product' => $product], 201);
+        }
 
     /**
      * Display the specified resource.
